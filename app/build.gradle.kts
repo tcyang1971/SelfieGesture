@@ -70,4 +70,7 @@ dependencies {
     implementation("androidx.camera:camera-lifecycle:$cameraxVersion")
     // 包含PreviewView，用於顯示相機預覽
     implementation("androidx.camera:camera-view:$cameraxVersion")
+
+    // MediaPipe Tasks Vision
+    implementation("com.google.mediapipe:tasks-vision:0.10.21")// 請檢查最新版本
 }
