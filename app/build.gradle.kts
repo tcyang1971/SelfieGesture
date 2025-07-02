@@ -59,4 +59,15 @@ dependencies {
 
     implementation("com.google.accompanist:accompanist-permissions:0.37.3")
 
+    val cameraxVersion = "1.4.2" // 請檢查最新的穩定版本
+
+    //CameraX 的核心
+    implementation("androidx.camera:camera-core:$cameraxVersion")
+    //提供CameraX與底層Android camera2 API相機硬體的實現
+    implementation("androidx.camera:camera-camera2:$cameraxVersion")
+
+    // 自動管理CameraX用例的生命週期
+    implementation("androidx.camera:camera-lifecycle:$cameraxVersion")
+    // 包含PreviewView，用於顯示相機預覽
+    implementation("androidx.camera:camera-view:$cameraxVersion")
 }

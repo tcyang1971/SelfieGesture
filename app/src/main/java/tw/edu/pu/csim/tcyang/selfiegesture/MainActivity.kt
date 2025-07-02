@@ -49,6 +49,7 @@ fun CameraPermission() {
 
     if (permissionState.status.isGranted) {
         Text("您允許拍照權限，歡迎使用拍照功能！")
+        CameraPreview()
     }
     else{
         if (permissionState.status.shouldShowRationale){
