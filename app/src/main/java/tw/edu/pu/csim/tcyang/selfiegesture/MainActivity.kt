@@ -14,6 +14,7 @@ import androidx.compose.material3.Button
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.tooling.preview.Preview
@@ -46,6 +47,15 @@ fun CameraPermission() {
     val permissionState = rememberPermissionState(
         Manifest.permission.CAMERA
     )
+
+    // 副作用處理器，它會在 Composable 首次進入組合時執行一次其內部的程式碼塊。
+    LaunchedEffect(Unit) { // 'Unit' 表示這個 LaunchedEffect 只會執行一次
+        if (!permissionState.status.isGranted && !permissionState.status.shouldShowRationale) {
+            // 如果權限未授予，且不應顯示理由 (表示是第一次請求或被永久拒絕)
+            // 這裡我們直接啟動權限請求
+            permissionState.launchPermissionRequest()
+        }
+    }
 
     if (permissionState.status.isGranted) {
         Text("您允許拍照權限，歡迎使用拍照功能！")
